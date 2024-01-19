@@ -25,6 +25,10 @@ export const MyFooter = () => {
       <Stack sx={{
         bgcolor: '#fff',
         position: 'relative',
+        // background: '#fef4ea',
+        width: '100%',
+        padding: '0.1rem 5% 0.1rem',
+      
         
       }}>
         <Box sx={{
@@ -36,7 +40,8 @@ export const MyFooter = () => {
            gap: '1.5rem',
            marginTop: '2rem',
            background: '#fef4ea',
-           padding:'20px'
+         
+           padding:'5px'
         }}>
           <div className="footer-box">
             <a href="" className="logo">

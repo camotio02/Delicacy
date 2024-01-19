@@ -17,8 +17,8 @@ import LocalMallIcon from '@mui/icons-material/LocalMall'
 import { TextField, Typography, Stack, Box } from '@mui/material'
 import { useState } from 'react'
 
-const pages = ['Home', 'Categoria', 'Produtos', 'Pobre', 'Clientes']
-const settings = ['Home', 'Categoria', 'Produtos', 'Pobre', 'Clientes']
+const pages = ['Home', 'Categoria', 'Produtos', 'Sobre - Nos', 'Clientes']
+const settings = ['Home', 'Categoria', 'Produtos', 'Sobre - Nos', 'Clientes']
 
 export const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null)

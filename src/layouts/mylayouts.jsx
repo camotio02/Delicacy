@@ -1,5 +1,4 @@
 import { Box, Stack } from "@mui/system";
-import { MyFooter } from "../componets/footer/Footer";
 
 
 
@@ -14,7 +13,7 @@ export const MainLayout = ({ children }) => {
                 <Box sx={{ width: "100%", mt: "0vh", height: "100vh", bgcolor: 'black', color:'blue'}}>
                     {children}
                 </Box>
-                <MyFooter/>
+            
             </Stack>
         </>
     );

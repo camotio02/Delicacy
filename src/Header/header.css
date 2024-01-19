@@ -24,22 +24,6 @@
   overflow-x: hidden !important;
 }
 
-/* Custom Scroll Bar */
-::-webkit-scrollbar {
-  width: 0.5rem;
-  background: var(--green-color);
-}
-
-::-webkit-scrollbar-thumb {
-  width: 0.5rem;
-  background: var(--green-color);
-  border-radius: 5rem;
-}
-
-.bx-search {
-  font-size: 24px;
-  cursor: pointer;
-}
 
 /* // */
 
@@ -296,9 +280,7 @@ section {
   padding: 4.5rem 0 1.5rem;
 }
 
-img {
-  width: 100%;
-}
+
 
 body {
   color: var(--text-color);
@@ -436,16 +418,6 @@ header {
   position: relative !important;
   min-height: 740px;
 }
-#container img {
-  width: 400px;
-  /* position: absolute; */
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-
-  width: 50%;
-  padding: 0 150px;
-}
 
 .home-text span {
   font-weight: 800;
@@ -457,11 +429,7 @@ header {
   padding: 0 90px;
 }
 
-.home-text p {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
+
 .btn {
   padding: 0.6rem 1rem;
   background: var(--green-color);
@@ -1241,9 +1209,7 @@ header {
   .home-text {
     padding: 0 25px;
   }
-  #container img {
-    right: 700px;
-  }
+
   .total-dosItens .total-carrinho {
     font-weight: 500;
     color: var(--light-orange-color);
@@ -1273,12 +1239,7 @@ header {
     width: 98%;
   }
 
-  .home-text p {
-    font-size: 1.3rem;
-  }
-  .home-text p {
-    font-size: 0 5%;
-  }
+ 
   .swiper-button-next,
   .swiper-button-prev {
     margin: 0;
@@ -1387,9 +1348,7 @@ header {
     width: 100%;
   }
 
-  .home-text p {
-    font-size: 1.2rem;
-  }
+ 
 
   .btn {
     padding: 0.6rem 1.2rem;
@@ -1472,9 +1431,7 @@ header {
 }
 
 @media (max-width: 712px) {
-  #container img {
-    width: 570px;
-  }
+ 
   .Mymodal-content {
     width: 98%;
     top: 50%;
@@ -1544,21 +1501,7 @@ header {
   }
 }
 
-@media (max-width: 546px) {
-  #container img {
-    width: 580px;
 
-    object-fit: contain;
-  }
-
-  .home-text {
-    /* background: #25427a; */
-    width: 100%;
-    height: auto;
-    gap: 2rem !important;
-    /* padding: 0 150px; */
-  }
-}
 
 @media (max-width: 380px) {
   .logo {
@@ -1574,17 +1517,8 @@ header {
     font-size: 10px;
   }
 
-  /* .home-text  {
-  padding-bottom: 17rem;
- } */
-
-  .home-text span {
-    font-size: 0.8rem;
-  }
-
-  .home-text p {
-    font-size: 1.1rem;
-  }
+ 
+ 
 
   .heading {
     display: flex;

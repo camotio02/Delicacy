@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import './home.css'
 import { TextField, Typography, Stack, Box } from '@mui/material'
+import  {ShoppingItems} from '../shoppingItems/shoppingItems'
+import { MyFooter } from '../componets/footer/Footer'
+import { SignIn } from '../componets/signin-in/signinIn'
 
 export const MyHome = () => {
   
@@ -10,10 +13,8 @@ export const MyHome = () => {
         sx={{
           minHeight: '100vh',
           width: '100%',
-            // padding: '5rem 9% 2rem',
-          backgroundColor: '#081b29',
-
-          background: '#fff',
+          backgroundColor: '#fff',
+          // background: 'red',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -28,7 +29,11 @@ export const MyHome = () => {
       >
       
     
+   
+        <ShoppingItems/>
+       <SignIn/>
         <h2>Ola mundo!!</h2>
+        <MyFooter/>
       </Stack>
     </>
   )

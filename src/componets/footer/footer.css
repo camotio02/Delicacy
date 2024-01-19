@@ -36,6 +36,7 @@
   background: #fef4ea;
   position: relative;
   padding: 20px 100px;
+  
 }
 
 
@@ -46,7 +47,8 @@
 }
 .footer-box p {
   font-size: 1.3rem;
-  
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 
@@ -75,6 +77,7 @@
   font-size: 1.9rem;
   font-weight: 800;
   margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
 .footer-box a {
@@ -120,7 +123,7 @@
   background: #faeaea;
   color: var(--green-color);
   font-weight: 700;
-  max-width: 100%;
+  width: 100%;
 }
 
 @media (max-width: 852px) {
