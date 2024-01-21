@@ -3,17 +3,21 @@ import {
   Box, Stack,
   Typography,
   TextField, Button,
-  InputAdornment,
   IconButton,
+  useMediaQuery,
 } from '@mui/material'
 import './signinIn.css'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { get_users } from '../../api/users';
 import { AuthContext } from '../../authcontext';
+import * as Tag from './styles/index'
+import { IsMobile } from '../IsMobile';
 
 export const SignIn = () => {
-  const { user } = useContext(AuthContext)
+  const matches = useMediaQuery('max-width:800px)');
+  const { user, loginWithEmailAndPassword, loginWithGoogle } = useContext(AuthContext);
+  console.log(user)
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +35,6 @@ export const SignIn = () => {
   useEffect(() => {
     getUsers()
   }, [])
-  console.log(users);
   const clearErrors = () => {
     setEmailError('');
     setPasswordError('');
@@ -39,38 +42,24 @@ export const SignIn = () => {
 
   const validateForm = () => {
     clearErrors();
-
     let isValid = true;
-
     if (email === '') {
       setEmailError('O e-mail é obrigatório.');
       isValid = false;
     }
-
     if (password.length < 6) {
       setPasswordError('A senha deve ter pelo menos 6 caracteres.');
       isValid = false;
     }
-
     if (isValid) {
-      // Continue with the authentication logic
-      // ...
-
-      // Example: Simulate a loading state
       alert('Formulário válido! Execute a lógica de autenticação aqui.');
     }
-
-    // function IsEmail(email) {
-    //   var exclude = /[^@-.w]|^[_@.-]|[._-]{2}|[@.]{2}|(@)[^@]*1/;
-    //   var check = /@[w-]+./;
-    //   var checkend = /.[a-zA-Z]{2,3}$/;
-    //   if (((email.search(exclude) != -1) || (email.search(check)) == -1) || (email.search(checkend) == -1)) { return false; }
-    //   else { return true; }
-    // }
   };
 
-  const logarWithPassword = () => {
+  console.log(matches);
 
+  const logarWithPassword = () => {
+    loginWithEmailAndPassword(email, password)
   }
   return (
     <>
@@ -79,11 +68,11 @@ export const SignIn = () => {
         <div>Logando...</div>
       </Box>
 
-      <Stack className="container_form">
-        <Stack className="conatiner-login">
-          <Typography variant="h4">
+      <Tag.ContainerSignin>
+        <Tag.ConatinerLogin>
+          <Tag.LoginH4 matches={matches}>
             Faça login para garantir a sua segurança
-          </Typography>
+          </Tag.LoginH4>
           <form id="loginForm">
             <Box sx={{
               width: ' 100%',
@@ -142,7 +131,6 @@ export const SignIn = () => {
                 }}
               />
             </Box>
-
             <Box
               sx={{
 
@@ -164,8 +152,8 @@ export const SignIn = () => {
                 <a className='linkCadastro' href="./cadastro.html">Cadastrar-se</a>
               </li>
             </Box>
-
             <Button
+            fullWidth
               sx={{
                 backgroundColor: 'var(--green-color)',
                 color: 'white',
@@ -181,13 +169,13 @@ export const SignIn = () => {
               }}
               className="BotaoLogar"
               type="button"
-              onClick={logarWithPassword}
+              onClick={()=> logarWithPassword()}
             >
               Logar
             </Button>
           </form>
-        </Stack>
-      </Stack>
+        </Tag.ConatinerLogin>
+      </Tag.ContainerSignin>
     </>
   )
 }

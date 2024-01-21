@@ -1,20 +1,13 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import {
     GoogleAuthProvider,
     getAuth,
     signInWithEmailAndPassword,
     signInWithPopup,
     onAuthStateChanged,
-} from 'firebase/auth';
+} from 'firebase/auth'
 import {
     getFirestore,
-    collection,
-    query,
-    where,
-    getDocs,
-    doc,
-    setDoc,
-    updateDoc,
 } from 'firebase/firestore';
 export const AuthContext = createContext();
 const provider = new GoogleAuthProvider();
@@ -30,7 +23,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(loggedInStatus === 'true');
 
         if (loggedInStatus === 'true') {
-            const userDataFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+            const userDataFromLocalStorage = JSON.parse(localStorage.getItem('user') || {});
             setUser(userDataFromLocalStorage);
         }
 
@@ -63,52 +56,31 @@ export const AuthProvider = ({ children }) => {
     };
 
     const loginWithGoogle = async () => {
-        try {
-            const result = await signInWithPopup(auth, provider);
-            const { user } = result;
-
-            const usersRef = collection(firestore, 'users');
-            const querySnapshot = await getDocs(query(usersRef, where('email', '==', user.email)));
-            const existingUser = querySnapshot.docs[0];
-
-            if (existingUser) {
-                const userData = { name: user.displayName };
-                await updateDoc(doc(usersRef, existingUser.id), userData);
-                setUser(existingUser.data());
-            } else {
-                const newUser = {
-                    id: user.uid,
-                    name: user.displayName,
-                    email: user.email,
-                    photoURL: user.photoURL,
-                };
-
-                await setDoc(doc(usersRef, user.uid), newUser);
-                setUser(newUser);
-            }
-
-            login(user);
-        } catch (error) {
-            setOpen(true);
-            const errorMessage = error.message || 'Ocorreu um erro ao fazer login.';
-            setMessage(errorMessage);
-        }
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                console.log(error)
+            });
     };
 
     const loginWithEmailAndPassword = async (email, password) => {
         try {
             if (!email || !password) return;
-
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             setUser(userCredential.user);
             login(userCredential.user);
+            window.location.href = '/'
         } catch (error) {
-            setOpen(true);
-            const errorMessage = error.message || 'Ocorreu um erro ao fazer login.';
-            setMessage(errorMessage);
+            console.error('Erro Firebase:', error);
         }
     };
-
     return (
         <AuthContext.Provider
             value={{
@@ -120,7 +92,6 @@ export const AuthProvider = ({ children }) => {
                 user,
             }}
         >
-
             {children}
         </AuthContext.Provider>
     );

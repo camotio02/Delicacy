@@ -53,13 +53,6 @@
 }
 
 
-.conatiner-login h4 {
-  display: flex;
-  font-weight: 800;
-  justify-content: center;
-  align-items: center;
-  color: var(--green-color);
-}
 
 
 .linkCadastro{
@@ -112,16 +105,3 @@
 } 
 
 
-@media (max-width: 800px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  .conatiner-login h4 {
-    display: flex;
-    font-weight: 800;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.6rem;
-  }
-}
