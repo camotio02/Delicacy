@@ -33,14 +33,15 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  /* background: #c0eb7b; */
+  background: var(--bg-color);
 }
 
 .error {
   color: red;
-  font-size: 14px;
+  font-size: 1.9rem;
   margin-top: 5px;
 }
+
 
 .conatiner-login {
  padding: 20px;
@@ -51,10 +52,7 @@
  
 }
 
-#loginForm {
- 
-  gap: 9rem;
-}
+
 .conatiner-login h4 {
   display: flex;
   font-weight: 800;
@@ -64,7 +62,10 @@
 }
 
 
-
+.linkCadastro{
+  color: var(--light-orange-color);
+  font-weight: 600;
+}
 
 .contante_laoder {
   position: absolute;
@@ -109,3 +110,18 @@
     transform: rotate(360deg);
   }
 } 
+
+
+@media (max-width: 800px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .conatiner-login h4 {
+    display: flex;
+    font-weight: 800;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+  }
+}

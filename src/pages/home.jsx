@@ -4,6 +4,7 @@ import { TextField, Typography, Stack, Box } from '@mui/material'
 import  {ShoppingItems} from '../shoppingItems/shoppingItems'
 import { MyFooter } from '../componets/footer/Footer'
 import { SignIn } from '../componets/signin-in/signinIn'
+import { SignUp } from '../componets/signUp/signUp'
 
 export const MyHome = () => {
   
@@ -31,7 +32,8 @@ export const MyHome = () => {
     
    
         <ShoppingItems/>
-       <SignIn/>
+       {/* <SignIn/>
+        <SignUp/> */}
         <h2>Ola mundo!!</h2>
         <MyFooter/>
       </Stack>

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './Header.css'
+import './header.css'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'

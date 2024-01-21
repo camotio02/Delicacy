@@ -76,15 +76,6 @@
   position: absolute;
 }
 
-input[type="text"] {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid var(--green-color);
-  outline: none;
-}
-
 button {
   background-color: var(--green-color);
   color: white;
@@ -188,9 +179,7 @@ button:hover {
 box-shadow: 1px 2px 11px 4px rgb(14 55 54 / 20%);
  
 }
-.priceQuantity {
-  /* background-color: red; */
-}
+
 .produtoName {
   font-weight: 600;
   font-size: 1.2rem;

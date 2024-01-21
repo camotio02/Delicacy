@@ -1,31 +1,55 @@
-import React, { useState } from 'react'
-import { Box, Stack, Typography, TextField, Button } from '@mui/material'
+import React, { useContext, useEffect, useState } from 'react'
+import {
+  Box, Stack,
+  Typography,
+  TextField, Button,
+  InputAdornment,
+  IconButton,
+} from '@mui/material'
 import './signinIn.css'
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { get_users } from '../../api/users';
+import { AuthContext } from '../../authcontext';
 
 export const SignIn = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-
-  const clearErrors = () => {
-    setEmailError('')
-    setPasswordError('')
+  const { user } = useContext(AuthContext)
+  const [users, setUsers] = useState([]);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [abreSenha, setAbreSenha] = useState(false);
+  const getUsers = async () => {
+    try {
+      setUsers(await get_users.user.get());
+    } catch (error) {
+      console.error('erro au pegar os usuários', error);
+    }
   }
 
-  const validateForm = () => {
-    clearErrors()
+  useEffect(() => {
+    getUsers()
+  }, [])
+  console.log(users);
+  const clearErrors = () => {
+    setEmailError('');
+    setPasswordError('');
+  };
 
-    let isValid = true
+  const validateForm = () => {
+    clearErrors();
+
+    let isValid = true;
 
     if (email === '') {
-      setEmailError('O e-mail é obrigatório.')
-      isValid = false
+      setEmailError('O e-mail é obrigatório.');
+      isValid = false;
     }
 
     if (password.length < 6) {
-      setPasswordError('A senha deve ter pelo menos 6 caracteres.')
-      isValid = false
+      setPasswordError('A senha deve ter pelo menos 6 caracteres.');
+      isValid = false;
     }
 
     if (isValid) {
@@ -33,10 +57,21 @@ export const SignIn = () => {
       // ...
 
       // Example: Simulate a loading state
-      alert('Form is valid! Perform authentication logic here.')
+      alert('Formulário válido! Execute a lógica de autenticação aqui.');
     }
-  }
 
+    // function IsEmail(email) {
+    //   var exclude = /[^@-.w]|^[_@.-]|[._-]{2}|[@.]{2}|(@)[^@]*1/;
+    //   var check = /@[w-]+./;
+    //   var checkend = /.[a-zA-Z]{2,3}$/;
+    //   if (((email.search(exclude) != -1) || (email.search(check)) == -1) || (email.search(checkend) == -1)) { return false; }
+    //   else { return true; }
+    // }
+  };
+
+  const logarWithPassword = () => {
+
+  }
   return (
     <>
       <Box className="contante_laoder">
@@ -50,8 +85,19 @@ export const SignIn = () => {
             Faça login para garantir a sua segurança
           </Typography>
           <form id="loginForm">
-            <Box>
+            <Box sx={{
+              width: ' 100%',
+              borderRadius: '5px',
+              outline: 'none',
+              marginBottom: '2rem',
+
+            }}>
               <TextField
+                sx={{
+                  width: ' 100%',
+                  outline: 'none',
+                  fontSize: '2.9rem'
+                }}
                 type="email"
                 label="Digite seu e-mail..."
                 variant="outlined"
@@ -59,47 +105,63 @@ export const SignIn = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => clearErrors()}
               />
-              <Typography color="error" id="emailError">
+              <Typography fontSize={'1.5rem'} color="error" id="emailError">
                 {emailError}
               </Typography>
             </Box>
 
+
+
             <Box>
               <TextField
                 sx={{
-                  width: ' 100%',
-
+                  width: '100%',
                   borderRadius: '5px',
-                  //   border:' 1px solid var(--green-color)',
                   outline: 'none',
+                  '& input::placeholder': {
+                    fontSize: '2.5rem',
+                    fontWeight: '600',
+                  },
                 }}
-                type="password"
+                type={abreSenha ? 'text' : 'password'}
                 label="Digite uma senha de 6 dígitos..."
                 variant="outlined"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onInput={() => {
-                  clearErrors()
-                  // You may call your password strength checking function here
+                onInput={clearErrors}
+                InputProps={{
+                  endAdornment: (
+                    <Box>
+                      <IconButton
+                        onClick={() => setAbreSenha(!abreSenha)}
+                      >
+                        {abreSenha ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </Box>
+                  ),
                 }}
               />
-              <Typography color="error" id="passwordError">
-                {passwordError}
-              </Typography>
             </Box>
 
             <Box
               sx={{
-                bgcolor: 'red',
+
+                marginBottom: '1rem',
+                marginTop: '1rem',
                 display: 'flex',
+                fontSize: '1.5rem',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 flexDirection: 'row',
+                color: '#ff7e00'
               }}
             >
-              <Typography>Já tem uma conta?</Typography>
+              <Typography sx={{
+                fontSize: '1.4rem',
+                color: '#1a2428',
+              }}>Já tem uma conta?</Typography>
               <li>
-                <a href="./cadastro.html">Cadastrar-se</a>
+                <a className='linkCadastro' href="./cadastro.html">Cadastrar-se</a>
               </li>
             </Box>
 
@@ -109,6 +171,8 @@ export const SignIn = () => {
                 color: 'white',
                 border: 'none',
                 padding: '10px 15px',
+                fontSize: '1rem',
+                fontWeight: '600',
                 cursor: 'pointer',
                 borderRadius: '5px',
                 '&:hover': {
@@ -117,7 +181,7 @@ export const SignIn = () => {
               }}
               className="BotaoLogar"
               type="button"
-              onClick={validateForm}
+              onClick={logarWithPassword}
             >
               Logar
             </Button>
