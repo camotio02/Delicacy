@@ -105,17 +105,7 @@
   cursor: pointer;
 }
 
-/* .weak i.bxs-low-vision {
-  color: red;
-}
 
-.medium i.bx-happy-heart-eyes {
-  color: orange;
-} */
-
-/* .strong i.bx-happy-heart-eyes {
-  color: green;
-} */
 
 .show-password-button {
   display: inline-block;
@@ -209,12 +199,7 @@ button:hover {
     transform: rotate(360deg);
   }
 } 
-/* .categoria-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
-  gap: 1rem;
-  margin-top: 2rem;
-} */
+
 
 @media (max-width: 800px) {
   .conatiner-login {

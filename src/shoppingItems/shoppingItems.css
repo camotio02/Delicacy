@@ -31,9 +31,11 @@ img {
   width: 100%;
   padding: 0 150px;
 }
+
 .home-text {
   display: flex;
 }
+
 .home-text span {
   font-weight: 800;
   font-size: 1.8rem;
@@ -58,7 +60,7 @@ img {
 }
 
 .btnArrow {
-  padding: 1.2rem 1.5rem;
+  padding: 1.2rem 1.2rem;
   background: var(--green-color);
   color: var(--bg-color);
   font-weight: 600;
@@ -69,12 +71,23 @@ img {
   column-gap: 0.5rem;
   font-size: 1.7rem;
   max-width: 180px;
+  flex-direction: none;
 }
+
+.btnArrow:hover {
+  background:var(--light-orange-color); 
+  color: var(--bg-color);
+  cursor: pointer; 
+}
+
+
+
 
 @media (max-width: 1080px) {
   .home-text {
     padding: 0 25px;
   }
+
   img {
     width: 150%;
   }
@@ -89,6 +102,7 @@ img {
   .home-text p {
     font-size: 1.5rem;
   }
+
   img {
     width: 150%;
   }
@@ -106,6 +120,7 @@ img {
   .home-text p {
     font-size: 1.3rem;
   }
+
   .home-text p {
     font-size: 0 5%;
   }
@@ -133,6 +148,7 @@ img {
     font-size: 1.6rem;
   }
 }
+
 @media (max-width: 642px) {
   .containerImg img {
     width: 100%;
@@ -153,6 +169,7 @@ img {
     gap: 2rem;
     /* padding: 0 150px; */
   }
+
   .home-text span {
     font-size: 1.5rem;
   }

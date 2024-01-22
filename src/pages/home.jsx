@@ -5,6 +5,8 @@ import  {ShoppingItems} from '../shoppingItems/shoppingItems'
 import { MyFooter } from '../componets/footer/Footer'
 import { SignIn } from '../componets/signin-in/signinIn'
 import { SignUp } from '../componets/signUp/signUp'
+import { CategoryItem } from '../componets/category/category'
+
 
 export const MyHome = () => {
   
@@ -32,8 +34,7 @@ export const MyHome = () => {
     
    
         <ShoppingItems/>
-       {/* <SignIn/>
-        <SignUp/> */}
+        <CategoryItem/>
         <h2>Ola mundo!!</h2>
         <MyFooter/>
       </Stack>

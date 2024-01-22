@@ -73,7 +73,13 @@ export const ShoppingItems = () => {
                 <span>{item.titleP}</span>
                 <p>{item.discretion}</p>
                 <a class="btnArrow">
-                  Compre agora <ArrowForwardIcon/>
+                  Compre agora <ArrowForwardIcon sx={{
+                     padding: '4px',
+                     background: 'var(--bg-color)',
+                     color: 'var(--text-color)',
+                     borderRadius: '1rem',
+                     fontSize: '2.2rem'
+                  }}/>
                 </a>
               </Box>
               <Box className="containerImg">
