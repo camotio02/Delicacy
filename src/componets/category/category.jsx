@@ -102,7 +102,7 @@ export const CategoryItem = () => {
                   backgroundImage: `url(${fruit.image})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
                   position: 'relative',
                   zIndex: 1,
                 }}
